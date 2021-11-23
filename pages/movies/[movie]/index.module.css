@@ -1,0 +1,35 @@
+.movie {
+    display: grid;
+    grid-template-columns: 0.2fr 0.8fr;
+    grid-template-rows: 1fr;
+    grid-gap: 10px;
+    margin: 10px 10px 10px 10px;
+}
+
+.movieData h1{
+    font-size: 3rem;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.movieData p {
+    font-size: 1.5rem;
+    font-weight: 900;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.container {
+    height: 90vh;
+
+}
+
+.releaseAndMovieLength {
+    font-size: 1rem;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 0.3fr 0.7fr;
+}
+
+.image {
+    border-radius: 13px;
+}
+

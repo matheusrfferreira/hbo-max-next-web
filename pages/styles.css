@@ -1,0 +1,10 @@
+body {
+    margin: 0;
+    color: white;
+    text-decoration: none;
+    padding: 0;
+    box-sizing: border-box;
+    background: #212529;
+    overflow: hidden;
+    scrollbar-darkshadow-color: #282A35;
+}

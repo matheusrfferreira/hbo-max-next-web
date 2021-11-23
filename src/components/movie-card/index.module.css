@@ -1,0 +1,10 @@
+.container {
+    margin: 10px 10px 10px 10px;
+    border-radius: 13px;
+}
+
+.container:hover {
+    transition: 0.25s ease;
+    cursor: pointer;
+    transform: translateY(-3px);
+}
