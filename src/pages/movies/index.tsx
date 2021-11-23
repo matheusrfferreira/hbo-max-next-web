@@ -3,8 +3,8 @@ import Head from "next/head";
 import axios from "axios";
 
 import styles from "./movies.module.css";
-import { MovieCard } from "../../src/components/movie-card";
-import { Navbar } from "../../src/components/navbar";
+import { MovieCard } from "../../components/movie-card";
+import { Navbar } from "../../components/navbar";
 
 
 function Movies({ movies }): NextPage {

@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 import styles from "./index.module.css";
-import { Navbar } from "../../../src/components/navbar";
+import { Navbar } from "../../../components/navbar";
 
 
 function MovieData(): NextPage {
