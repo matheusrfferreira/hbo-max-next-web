@@ -1,5 +1,4 @@
 import { useRouter } from "next/router";
-import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -7,8 +6,17 @@ import axios from "axios";
 
 import styles from "./index.module.css";
 import { Navbar } from "../../../components/navbar";
-import { Movie } from "./types";
 
+
+interface Movie {
+    title?: string;
+    banner?: string;
+    release?: string;
+    trailer?: string;
+    movie_length?: number;
+    description?: string;
+    content_rating?: string;
+};
 
 function MovieData() {
 
@@ -33,7 +41,7 @@ function MovieData() {
             }).catch(function (error) {
                 console.error(error);
             });
-        },[movie])
+        },[movie]);
 
     const movieData: Movie = {
         title: selectedMovie?.title,
@@ -43,7 +51,7 @@ function MovieData() {
         description: selectedMovie?.description,
         content_rating: selectedMovie?.content_rating,
         movie_length: selectedMovie?.movie_length,
-    }
+    };
 
     return (
         <div className={styles.container }>
@@ -86,4 +94,3 @@ function MovieData() {
 };
 
 export default MovieData;
-
