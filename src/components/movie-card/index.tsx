@@ -38,7 +38,7 @@ export const MovieCard = ({ imdbId }: any) => {
 
     return (
         <div className={styles.container}>
-            {movieData.banner ? <Link href={`/movies/${movieData.imdb_id}`}>
+            {movieData.banner ? <Link passHref href={`/movies/${movieData.imdb_id}`}>
                 <Image src={movieData.banner}
                        alt={movieData.title}
                        width={250}
