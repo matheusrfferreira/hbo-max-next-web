@@ -1,17 +1,17 @@
 import Link from "next/link";
 import Image from "next/image";
-import axios from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 import React, {useState, useEffect, ComponentProps} from "react";
 
 import styles from "./index.module.css";
-import { Options } from "./types";
+import { Movie } from "./types";
 
 
-export const MovieCard = ({ imdbId }: ComponentProps<string>) => {
+export const MovieCard = ({ imdbId }: any) => {
 
-    const[movie, setMovie] = useState({});
+    const[movie, setMovie] = useState<Movie | undefined>(undefined);
 
-    const options: Options= {
+    const options: AxiosRequestConfig<any> = {
         method: 'GET',
         url: `https://data-imdb1.p.rapidapi.com/movie/id/${imdbId}/`,
         headers: {
@@ -28,13 +28,19 @@ export const MovieCard = ({ imdbId }: ComponentProps<string>) => {
             console.error(error);
         });
 
-    },[])
+    })
+
+    const movieData: Movie = {
+        title: movie?.title,
+        banner: movie?.banner,
+        imdb_id: movie?.imdb_id,
+    }
 
     return (
         <div className={styles.container}>
-            {movie.image_url ? <Link href={`/movies/${movie.imdb_id}`}>
-                <Image src={movie.banner}
-                       alt={movie.title}
+            {movieData.banner ? <Link href={`/movies/${movieData.imdb_id}`}>
+                <Image src={movieData.banner}
+                       alt={movieData.title}
                        width={250}
                        height={330}
                        quality={100}

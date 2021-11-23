@@ -7,14 +7,15 @@ import axios from "axios";
 
 import styles from "./index.module.css";
 import { Navbar } from "../../../components/navbar";
+import { Movie } from "./types";
 
 
-function MovieData(): NextPage {
+function MovieData() {
 
     const router = useRouter();
-    const { movie } = router.query;
+    const { movie } = router.query; 
 
-    const[selectedMovie, setSelectedMovie] = useState({})
+    const[selectedMovie, setSelectedMovie] = useState<Movie | undefined>(undefined);
 
         useEffect(()=> {
             const options: any = {
@@ -34,42 +35,47 @@ function MovieData(): NextPage {
             });
         },[movie])
 
-
-
+    const movieData: Movie = {
+        title: selectedMovie?.title,
+        trailer: selectedMovie?.trailer,
+        banner: selectedMovie?.banner,
+        release: selectedMovie?.release,
+        description: selectedMovie?.description,
+        content_rating: selectedMovie?.content_rating,
+        movie_length: selectedMovie?.movie_length,
+    }
 
     return (
         <div className={styles.container }>
             <Head>
 
-                { selectedMovie.title ? (<title>{selectedMovie.title}</title>) : (<title>Movie</title>)}
+                { movieData.title ? (<title>{movieData.title}</title>) : (<title>Movie</title>)}
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
             </Head>
 
             <Navbar />
 
             <div >
-                { selectedMovie.title && (
+                { movieData && (
                     <div className={styles.movie}>
                         <div>
-                            <a href={selectedMovie.trailer}><Image
-                                src={selectedMovie.banner}
-                                alt={selectedMovie.title}
+                            <a href={movieData.trailer}><Image
+                                src={movieData.banner ? movieData.banner : 'movieData.banner'}
+                                alt={movieData.title}
                                 quality={100}
                                 width={400}
                                 height={500}
                                 className={styles.image}
                             /></a>
-
                         </div>
-
                         <div className={styles.movieData}>
-                                <h1>{selectedMovie.title} </h1>
+                                <h1>{movieData.title} </h1>
                             <div className={styles.releaseAndMovieLength}>
-                                <p>Release: {selectedMovie.release}</p>
-                                <p>Movie Length: {selectedMovie.movie_length} minutes</p>
+                                <p>Release: {movieData.release}</p>
+                                <p>Movie Length: {movieData.movie_length} minutes</p>
                             </div>
-                            <p>Content Rating: {selectedMovie.content_rating}</p>
-                            <p>Description: {selectedMovie.description}</p>
+                            <p>Content Rating: {movieData.content_rating}</p>
+                            <p>Description: {movieData.description}</p>
                         </div>
                     </div>
                     )}

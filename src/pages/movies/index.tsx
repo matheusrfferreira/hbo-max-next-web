@@ -5,9 +5,10 @@ import axios from "axios";
 import styles from "./movies.module.css";
 import { MovieCard } from "../../components/movie-card";
 import { Navbar } from "../../components/navbar";
+import { Movie } from "../../components/movie-card/types";
 
 
-function Movies({ movies }): NextPage {
+function Movies({ movies }: any) {
     return (
         <div className={styles.container}>
             <Head>
@@ -18,7 +19,7 @@ function Movies({ movies }): NextPage {
             <Navbar />
 
             <div className={styles.movies}>
-                {movies.map((movie) => (
+                {movies.map((movie: Movie) => (
                 <MovieCard key={movie.imdb_id} imdbId={movie.imdb_id} />
                 ))}
             </div>
